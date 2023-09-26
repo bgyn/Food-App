@@ -1,9 +1,14 @@
 import 'package:bhookmandu/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,10 +28,23 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
             )),
         textTheme: TextTheme(
+          titleMedium: GoogleFonts.poppins(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          titleSmall: GoogleFonts.poppins(
+            color: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+          labelSmall: GoogleFonts.poppins(
+            color: Colors.green,
+            fontSize: 12,
+          ),
           bodySmall: GoogleFonts.poppins(
             color: Colors.white,
           ),
-          
         ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: Color.fromRGBO(206, 33, 48, 1),

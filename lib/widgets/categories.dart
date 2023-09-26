@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Categories extends StatelessWidget {
   final List categoriesList = [
-    'Nepali Classic',
+    'Nepali Classics',
     'Dumplings',
     'Rice & Noodles',
     'Burger & Pastas',
@@ -19,7 +19,7 @@ class Categories extends StatelessWidget {
     final width = MediaQuery.of(context).size.width * 1;
     return Container(
       height: height * 0.12,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
