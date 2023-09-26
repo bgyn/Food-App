@@ -1,4 +1,5 @@
 import 'package:bhookmandu/widgets/carousel_slider.dart';
+import 'package:bhookmandu/widgets/categories.dart';
 import 'package:bhookmandu/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,11 +46,15 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: const AppDrawer(),
       body: ListView(
-        children: const [
-          SizedBox(
+        children: [
+          const SizedBox(
             height: 10,
           ),
-          CarouselSliders(),
+          const CarouselSliders(),
+          const SizedBox(
+            height: 10,
+          ),
+          Categories(),
         ],
       ),
     );

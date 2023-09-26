@@ -26,10 +26,12 @@ class MyApp extends StatelessWidget {
           bodySmall: GoogleFonts.poppins(
             color: Colors.white,
           ),
+          
         ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: Color.fromRGBO(206, 33, 48, 1),
         ),
+        scaffoldBackgroundColor: Colors.grey.shade300,
         useMaterial3: true,
       ),
       home: const HomePage(),
