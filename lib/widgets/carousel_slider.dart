@@ -12,7 +12,6 @@ class CarouselSliders extends StatefulWidget {
 class _CarouselSlidersState extends State<CarouselSliders> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 1;
     final height = MediaQuery.of(context).size.height * 1;
     return CarouselSlider(
       options: CarouselOptions(
@@ -23,7 +22,7 @@ class _CarouselSlidersState extends State<CarouselSliders> {
         autoPlayCurve: Curves.fastOutSlowIn,
         enableInfiniteScroll: true,
         autoPlayAnimationDuration: const Duration(milliseconds: 1000),
-        viewportFraction: 0.9,
+        viewportFraction: 1,
       ),
       items: [
         CachedNetworkImage(
@@ -32,8 +31,6 @@ class _CarouselSlidersState extends State<CarouselSliders> {
             child: CircularProgressIndicator(),
           ),
           imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height * 0.3,
             decoration: BoxDecoration(
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
             ),
@@ -47,8 +44,6 @@ class _CarouselSlidersState extends State<CarouselSliders> {
             child: CircularProgressIndicator(),
           ),
           imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height * 0.3,
             decoration: BoxDecoration(
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
             ),
@@ -62,8 +57,6 @@ class _CarouselSlidersState extends State<CarouselSliders> {
             child: CircularProgressIndicator(),
           ),
           imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height * 0.3,
             decoration: BoxDecoration(
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
             ),
@@ -77,8 +70,6 @@ class _CarouselSlidersState extends State<CarouselSliders> {
             child: CircularProgressIndicator(),
           ),
           imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height * 0.3,
             decoration: BoxDecoration(
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
             ),

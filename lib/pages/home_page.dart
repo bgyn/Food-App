@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: const [
           SizedBox(
-            height: 5,
+            height: 10,
           ),
           CarouselSliders(),
         ],
