@@ -56,7 +56,14 @@ class _HomePageState extends State<HomePage> {
             height: 10,
           ),
           Categories(),
-          const CategoryMenu(categoryTitle: "Nepali Classic")
+          const CategoryMenu(categoryTitle: "Nepali Classic"),
+          const CategoryMenu(categoryTitle: "Dumplings"),
+          const CategoryMenu(categoryTitle: "Rice & Noodles"),
+          const CategoryMenu(categoryTitle: "Burger & Pastas"),
+          const CategoryMenu(categoryTitle: "Home Made Noodles"),
+          const CategoryMenu(categoryTitle: "Pizzas"),
+          const CategoryMenu(categoryTitle: "Desserts"),
+          const CategoryMenu(categoryTitle: "Beverages"),
         ],
       ),
     );

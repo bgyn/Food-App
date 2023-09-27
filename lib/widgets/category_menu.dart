@@ -34,6 +34,9 @@ class CategoryMenu extends ConsumerWidget {
               )
             ],
           ),
+          const SizedBox(
+            height: 5,
+          ),
           //nepali classic menu
           SizedBox(
             height: height * 0.42,
