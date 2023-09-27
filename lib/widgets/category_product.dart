@@ -1,9 +1,17 @@
+import 'package:bhookmandu/model/product_model.dart';
+import 'package:bhookmandu/state/cart_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final productNotifer = StateNotifierProvider((_) => CartState());
+
 class CategoryProduct extends ConsumerWidget {
-  const CategoryProduct({super.key});
+  final Product product;
+  const CategoryProduct({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,91 +38,108 @@ class CategoryProduct extends ConsumerWidget {
                           image: imageProvider, fit: BoxFit.cover),
                     ),
                   ),
-                  imageUrl:
-                      'https://images.unsplash.com/photo-1528279027-68f0d7fce9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc3QlMjBmb29kfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+                  imageUrl: product.productImage,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  product.productName,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(fontSize: 12),
                 ),
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                "Product Name",
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                "From Rs. 0.00",
+                "From Rs. ${product.productPrice}",
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 40,
-                      width: 30,
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(color: Colors.green, width: 2),
-                          bottom: BorderSide(color: Colors.green, width: 2),
-                          left: BorderSide(color: Colors.green, width: 2),
+              Consumer(builder: (context, ref, _) {
+                ref.watch(productNotifer);
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        ref
+                            .read(productNotifer.notifier)
+                            .updateQuantity(product, product.productQuantity--);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 40,
+                        width: 30,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Colors.green, width: 2),
+                            bottom: BorderSide(color: Colors.green, width: 2),
+                            left: BorderSide(color: Colors.green, width: 2),
+                          ),
+                        ),
+                        child: Text(
+                          "-",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.copyWith(fontSize: 24),
                         ),
                       ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 40,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.green, width: 2),
+                      ),
                       child: Text(
-                        "-",
+                        product.productQuantity.toString(),
                         style: Theme.of(context)
                             .textTheme
                             .labelSmall
-                            ?.copyWith(fontSize: 24),
+                            ?.copyWith(fontSize: 18),
                       ),
                     ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 40,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.green, width: 2),
-                    ),
-                    child: Text(
-                      "1",
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelSmall
-                          ?.copyWith(fontSize: 18),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 40,
-                      width: 30,
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(color: Colors.green, width: 2),
-                          bottom: BorderSide(color: Colors.green, width: 2),
-                          right: BorderSide(color: Colors.green, width: 2),
+                    InkWell(
+                      onTap: () {
+                        ref
+                            .read(productNotifer.notifier)
+                            .updateQuantity(product, product.productQuantity++);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 40,
+                        width: 30,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Colors.green, width: 2),
+                            bottom: BorderSide(color: Colors.green, width: 2),
+                            right: BorderSide(color: Colors.green, width: 2),
+                          ),
+                        ),
+                        child: Text(
+                          "+",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.copyWith(fontSize: 24),
                         ),
                       ),
-                      child: Text(
-                        "+",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelSmall
-                            ?.copyWith(fontSize: 24),
-                      ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                );
+              })
             ],
           ),
           Positioned(

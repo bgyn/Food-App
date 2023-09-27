@@ -1,3 +1,10 @@
+import 'package:bhookmandu/data/local/beverages.dart';
+import 'package:bhookmandu/data/local/burger_pasta.dart';
+import 'package:bhookmandu/data/local/desserts.dart';
+import 'package:bhookmandu/data/local/dumplings.dart';
+import 'package:bhookmandu/data/local/nepali_classic.dart';
+import 'package:bhookmandu/data/local/pizzas.dart';
+import 'package:bhookmandu/data/local/rice_noodles.dart';
 import 'package:bhookmandu/widgets/carousel_slider.dart';
 import 'package:bhookmandu/widgets/categories.dart';
 import 'package:bhookmandu/widgets/category_menu.dart';
@@ -56,14 +63,34 @@ class _HomePageState extends State<HomePage> {
             height: 10,
           ),
           Categories(),
-          const CategoryMenu(categoryTitle: "Nepali Classic"),
-          const CategoryMenu(categoryTitle: "Dumplings"),
-          const CategoryMenu(categoryTitle: "Rice & Noodles"),
-          const CategoryMenu(categoryTitle: "Burger & Pastas"),
-          const CategoryMenu(categoryTitle: "Home Made Noodles"),
-          const CategoryMenu(categoryTitle: "Pizzas"),
-          const CategoryMenu(categoryTitle: "Desserts"),
-          const CategoryMenu(categoryTitle: "Beverages"),
+          CategoryMenu(
+            categoryTitle: "Nepali Classic",
+            categoryList: NepaliClassic().nepaliClassicList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Dumplings",
+            categoryList: Dumplings().dumplingList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Rice & Noodles",
+            categoryList: RiceNoodles().riceNoodlesList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Burger & Pastas",
+            categoryList: BurgerPasta().burgerPastaList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Pizzas",
+            categoryList: Pizzas().pizzasList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Desserts",
+            categoryList: Deserts().desertsList,
+          ),
+          CategoryMenu(
+            categoryTitle: "Beverages",
+            categoryList: Beverages().beveragesList,
+          ),
         ],
       ),
     );

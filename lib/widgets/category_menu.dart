@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CategoryMenu extends ConsumerWidget {
+  final List categoryList;
   final String categoryTitle;
-  const CategoryMenu({super.key, required this.categoryTitle});
+  const CategoryMenu({
+    super.key,
+    required this.categoryTitle,
+    required this.categoryList,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,9 +47,11 @@ class CategoryMenu extends ConsumerWidget {
             height: height * 0.42,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: categoryList.length,
               itemBuilder: (context, index) {
-                return const CategoryProduct();
+                return CategoryProduct(
+                  product: categoryList[index],
+                );
               },
             ),
           )
