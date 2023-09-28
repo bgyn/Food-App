@@ -14,11 +14,11 @@ class Product {
     int? productQuantity,
   }) : productId = productId ?? const Uuid().v4();
 
-  Product update({int? quantity}) => Product(
-        productId: productId,
-        productImage: productImage,
-        productName: productName,
-        productPrice: productPrice,
+  Product update({Product? product,int? quantity}) => Product(
+        productId: product!.productId,
+        productImage: product.productImage,
+        productName: product.productName,
+        productPrice: product.productPrice,
         productQuantity: quantity,
       );
 }

@@ -1,4 +1,4 @@
-import 'package:bhookmandu/model/product_model.dart';
+import 'package:bhookmandu/data/model/product_model.dart';
 
 class BurgerPasta {
   final List burgerPastaList = [
