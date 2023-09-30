@@ -1,11 +1,10 @@
 import 'package:bhookmandu/data/model/product_model.dart';
-import 'package:bhookmandu/state/product_notifier.dart';
+import 'package:bhookmandu/state/provider/cart_list_provider.dart';
+import 'package:bhookmandu/state/provider/product_notifer.dart';
 import 'package:bhookmandu/widgets/quantity_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-final productNotifer = StateNotifierProvider((_) => ProductNotifer());
 
 class CategoryProduct extends ConsumerWidget {
   final Product product;
@@ -86,7 +85,9 @@ class CategoryProduct extends ConsumerWidget {
             width: width * 0.45,
             bottom: 0,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                ref.read(cartListProvider.notifier).addToCart(product);
+              },
               child: Padding(
                 padding: const EdgeInsets.all(3),
                 child: Container(

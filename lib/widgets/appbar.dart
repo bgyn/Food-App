@@ -1,3 +1,4 @@
+import 'package:bhookmandu/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,9 +24,14 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
           style: Theme.of(context).textTheme.bodySmall,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          },
           icon: const Icon(
-            Icons.shopping_bag,
+            Icons.shopping_cart,
             color: Colors.white,
           ),
         ),

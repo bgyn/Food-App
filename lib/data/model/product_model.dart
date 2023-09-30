@@ -21,5 +21,7 @@ class Product {
         productPrice: product.productPrice,
         productQuantity: quantity,
       );
+
+  
 }
 

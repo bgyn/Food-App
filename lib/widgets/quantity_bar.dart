@@ -1,5 +1,5 @@
 import 'package:bhookmandu/data/model/product_model.dart';
-import 'package:bhookmandu/widgets/category_product.dart';
+import 'package:bhookmandu/state/provider/product_notifer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

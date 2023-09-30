@@ -16,6 +16,13 @@ class AppDrawer extends StatelessWidget {
             TextButton(
               onPressed: () {},
               child: Text(
+                "Home",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
                 "Shop",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
