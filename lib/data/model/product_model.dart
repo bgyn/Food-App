@@ -4,7 +4,7 @@ class Product {
   String productId;
   final String productImage;
   final String productName;
-  final String productPrice;
+  final double productPrice;
   int productQuantity = 1;
   Product({
     String? productId,

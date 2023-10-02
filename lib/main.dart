@@ -23,10 +23,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color.fromRGBO(206, 33, 48, 1),
         appBarTheme: const AppBarTheme(
-            backgroundColor: Color.fromRGBO(206, 33, 48, 1),
-            iconTheme: IconThemeData(
-              color: Colors.white,
-            )),
+          backgroundColor: Color.fromRGBO(206, 33, 48, 1),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+        ),
         textTheme: TextTheme(
           titleMedium: GoogleFonts.poppins(
             color: Colors.black,

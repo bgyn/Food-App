@@ -19,7 +19,9 @@ class CategoryProduct extends ConsumerWidget {
     final height = MediaQuery.of(context).size.height * 1;
 
     void update(Product product, int? quantity) {
-      ref.read(productNotifer.notifier).updateQuantity(product, quantity);
+      ref
+          .read(productNotiferProvider.notifier)
+          .updateQuantity(product, quantity);
     }
 
     return Container(

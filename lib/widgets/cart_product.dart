@@ -12,7 +12,9 @@ class CartProduct extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void update(Product product, int? quantity) {
-      ref.read(productNotifer.notifier).updateQuantity(product, quantity);
+      ref
+          .read(productNotiferProvider.notifier)
+          .updateQuantity(product, quantity);
     }
 
     final width = MediaQuery.of(context).size.width * 1;
@@ -24,158 +26,177 @@ class CartProduct extends ConsumerWidget {
           child: Column(
             children: [
               SizedBox(
-                height: height * 0.6,
+                height: height * 0.65,
                 child: ListView.builder(
-                    itemCount: cartList.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
+                  itemCount: cartList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Container(
                         padding: const EdgeInsets.all(10),
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          width: width * 0.1,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(cartList[index].productName),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          ref
-                                              .read(cartListProvider.notifier)
-                                              .removeFromCart(cartList[index]);
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.all(8),
-                                          decoration: const BoxDecoration(
-                                            color: Color.fromRGBO(
-                                                211, 100, 104, 1),
-                                          ),
-                                          child: Text(
-                                            "Remove",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall
-                                                ?.copyWith(color: Colors.white),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: width * .25,
-                                    height: height * 0.08,
-                                    child: CachedNetworkImage(
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
-                                      imageBuilder: (context, imageProvider) =>
-                                          Container(
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.cover),
-                                        ),
-                                      ),
-                                      imageUrl: cartList[index].productImage,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(cartList[index].productPrice),
-                              Center(
-                                child: ProductQuantiy(
-                                  product: cartList[index],
-                                  onDecreament: () => update(
-                                      cartList[index],
-                                      cartList[index].productQuantity == 1
-                                          ? null
-                                          : cartList[index].productQuantity--),
-                                  onIncreament: () => update(cartList[index],
-                                      cartList[index].productQuantity++),
-                                ),
-                              ),
-                            ],
-                          ),
+                        width: width * 0.1,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
                         ),
-                      );
-                    }),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(cartList[index].productName),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        ref
+                                            .read(cartListProvider.notifier)
+                                            .removeFromCart(cartList[index]);
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: const BoxDecoration(
+                                          color:
+                                              Color.fromRGBO(211, 100, 104, 1),
+                                        ),
+                                        child: Text(
+                                          "Remove",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelSmall
+                                              ?.copyWith(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: width * .25,
+                                  height: height * 0.08,
+                                  child: CachedNetworkImage(
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: imageProvider,
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                    imageUrl: cartList[index].productImage,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(cartList[index].productPrice.toString()),
+                            Center(
+                              child: ProductQuantiy(
+                                product: cartList[index],
+                                onDecreament: () => update(
+                                    cartList[index],
+                                    cartList[index].productQuantity == 1
+                                        ? null
+                                        : cartList[index].productQuantity--),
+                                onIncreament: () => update(cartList[index],
+                                    cartList[index].productQuantity++),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
               const Divider(
                 height: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+              Consumer(
+                builder: (context, ref, _) {
+                  ref.watch(productNotiferProvider);
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Subtotal",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Rs.",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            )
+                          ],
+                        ),
                         Text(
-                          "Subtotal",
+                          ref
+                              .read(cartListProvider.notifier)
+                              .grandTotal()
+                              .toStringAsFixed(1),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
                         Text(
-                          "Rs.",
+                          "Delivery Rs. 125.0",
                           style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Grand Total",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Rs. ",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              '${ref.read(cartListProvider.notifier).grandTotal() + 125.00}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue,
+                          ),
+                          child: const Text(
+                            'Checkout',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
                         )
                       ],
                     ),
-                    Text(
-                      '100',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Text(
-                      "Delivery Rs. 125.00",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Grand Total",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "Rs.",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        Text(
-                          "1000",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
+                  );
+                },
+              ),
             ],
           ),
         );

@@ -13,4 +13,12 @@ class CartListNotifer extends StateNotifier<List<Product>> {
         .where((thisProduct) => thisProduct.productId != product.productId)
         .toList();
   }
+
+  double grandTotal() {
+    double total = 1;
+    for (final product in state) {
+      total = total +(product.productQuantity*product.productPrice);
+    }
+    return total;
+  }
 }

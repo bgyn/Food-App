@@ -16,7 +16,7 @@ class ProductQuantiy extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(productNotifer);
+    ref.watch(productNotiferProvider);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
