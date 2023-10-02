@@ -101,7 +101,7 @@ class CartProduct extends ConsumerWidget {
                             ),
                             Text(cartList[index].productPrice.toString()),
                             Center(
-                              child: ProductQuantiy(
+                              child: QuantityBar(
                                 product: cartList[index],
                                 onDecreament: () => update(
                                     cartList[index],

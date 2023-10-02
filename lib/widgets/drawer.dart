@@ -1,3 +1,4 @@
+import 'package:bhookmandu/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -13,7 +14,10 @@ class AppDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
+              },
               child: Text(
                 "Home",
                 style: Theme.of(context).textTheme.bodySmall,

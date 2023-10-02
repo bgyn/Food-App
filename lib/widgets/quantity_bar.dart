@@ -3,11 +3,11 @@ import 'package:bhookmandu/state/provider/product_notifer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductQuantiy extends ConsumerWidget {
+class QuantityBar extends ConsumerWidget {
   final Function()? onIncreament;
   final Function()? onDecreament;
   final Product product;
-  const ProductQuantiy({
+  const QuantityBar({
     super.key,
     required this.product,
     required this.onIncreament,
@@ -18,6 +18,7 @@ class ProductQuantiy extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(productNotiferProvider);
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(

@@ -1,4 +1,5 @@
 import 'package:bhookmandu/pages/cart_page.dart';
+import 'package:bhookmandu/pages/home_page.dart';
 import 'package:bhookmandu/state/provider/cart_list_provider.dart';
 import 'package:bhookmandu/state/provider/product_notifer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -19,18 +20,22 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
           const SizedBox(
             width: 10,
           ),
-          CachedNetworkImage(
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            imageBuilder: (context, imageProvider) => Container(
-              width: 100,
-              height: 50,
-              decoration: BoxDecoration(
-                image:
-                    DecorationImage(image: imageProvider, fit: BoxFit.contain),
+          InkWell(
+            onTap: () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomePage())),
+            child: CachedNetworkImage(
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+              imageBuilder: (context, imageProvider) => Container(
+                width: 100,
+                height: 50,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: imageProvider, fit: BoxFit.contain),
+                ),
               ),
+              imageUrl: "https://bhokmandu.com.np/uploads/logo_0.png",
             ),
-            imageUrl: "https://bhokmandu.com.np/uploads/logo_0.png",
           ),
           const Spacer(),
           Text(
