@@ -5,7 +5,7 @@ import 'package:bhookmandu/data/local/dumplings.dart';
 import 'package:bhookmandu/data/local/nepali_classic.dart';
 import 'package:bhookmandu/data/local/pizzas.dart';
 import 'package:bhookmandu/data/local/rice_noodles.dart';
-import 'package:bhookmandu/widgets/appbar.dart';
+import 'package:bhookmandu/widgets/customappbar.dart';
 import 'package:bhookmandu/widgets/carousel_slider.dart';
 import 'package:bhookmandu/widgets/categories.dart';
 import 'package:bhookmandu/widgets/category_menu.dart';
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      drawer: const AppDrawer(),
+      endDrawer: const AppDrawer(),
       body: ListView(
         children: [
           const SizedBox(

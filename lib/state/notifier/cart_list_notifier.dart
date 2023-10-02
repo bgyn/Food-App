@@ -15,9 +15,9 @@ class CartListNotifer extends StateNotifier<List<Product>> {
   }
 
   double grandTotal() {
-    double total = 1;
+    double total = 0;
     for (final product in state) {
-      total = total +(product.productQuantity*product.productPrice);
+      total = total + (product.productQuantity * product.productPrice);
     }
     return total;
   }
