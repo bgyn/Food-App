@@ -1,4 +1,6 @@
 import 'package:bhookmandu/pages/cart_page.dart';
+import 'package:bhookmandu/state/provider/cart_list_provider.dart';
+import 'package:bhookmandu/state/provider/product_notifer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,9 +37,18 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
             color: Colors.white,
           ),
         ),
-        Text(
-          "Rs 0.00",
-          style: Theme.of(context).textTheme.bodySmall,
+        Consumer(
+          builder: ((context, ref, _) {
+            ref.watch(productNotiferProvider);
+            ref.watch(cartListProvider);
+            return Text(
+              ref
+                  .read(cartListProvider.notifier)
+                  .grandTotal()
+                  .toStringAsFixed(2),
+              style: Theme.of(context).textTheme.bodySmall,
+            );
+          }),
         ),
         const SizedBox(
           width: 15,
