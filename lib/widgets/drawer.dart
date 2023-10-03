@@ -1,4 +1,5 @@
 import 'package:bhookmandu/pages/home_page.dart';
+import 'package:bhookmandu/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -38,7 +39,10 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SigUpPage()));
+              },
               child: Text(
                 "Sign In",
                 style: Theme.of(context).textTheme.bodySmall,

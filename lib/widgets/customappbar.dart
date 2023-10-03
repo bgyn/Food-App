@@ -2,7 +2,6 @@ import 'package:bhookmandu/pages/cart_page.dart';
 import 'package:bhookmandu/pages/home_page.dart';
 import 'package:bhookmandu/state/provider/cart_list_provider.dart';
 import 'package:bhookmandu/state/provider/product_notifer.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +13,7 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
+      automaticallyImplyLeading: false,
       titleSpacing: 0,
       title: Row(
         children: [
@@ -23,18 +23,12 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
           InkWell(
             onTap: () => Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const HomePage())),
-            child: CachedNetworkImage(
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              imageBuilder: (context, imageProvider) => Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: imageProvider, fit: BoxFit.contain),
-                ),
+            child: SizedBox(
+              height: 40,
+              child: Image.asset(
+                'assets/logo_0.png',
+                fit: BoxFit.contain,
               ),
-              imageUrl: "https://bhokmandu.com.np/uploads/logo_0.png",
             ),
           ),
           const Spacer(),
