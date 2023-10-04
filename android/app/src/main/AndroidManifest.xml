@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="bhookmandu"
+        android:label="Bhookmandu"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/bhookmandu_logo">
         <activity
             android:name=".MainActivity"
             android:exported="true"
